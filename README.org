@@ -1,0 +1,5 @@
+* This repo contains various implementation for a brainfuck interpreter
+It's an interesting exercise, it's simple and, even after a simple "hello world!", it let you appreciate better other programming language.
+* Current implementation:
++ C
++ Elisp
