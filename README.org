@@ -3,3 +3,9 @@ It's an interesting exercise, it's simple and, even after a simple "hello world!
 * Current implementation:
 + C
 + Elisp
++ Java
+* Other language that I want to use:
++ Haskell
++ awk
++ rust (This is really interesting, but for now I don't know it very well)
++ Prolog

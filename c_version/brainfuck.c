@@ -6,6 +6,8 @@
 
 #define MEM_SIZE 30000
 
+// see http://brainfuck.org/tests.b
+
 typedef struct brainfuck_t {
   char memory[MEM_SIZE];
   unsigned short pointer;
@@ -24,12 +26,11 @@ int main(int argc, char **argv) {
   // hello world
   execute_program(bf, "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---"
                       ".+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.");
-  // test: see http://brainfuck.org/tests.b
-  execute_program(bf, "++++[>+++++<-]>[<+++++>-]+<+[>[>+>+<<-]++>>[<<+>>-]>>>[-"
-                      "]++>[-]+>>>+[[-]++++"
-                      "++>>>]<<<[[<++++++++<++>>-]+<.<[>----<-]<]<<[>>>>>[>>>[-"
-                      "]+++++++++<[>-<-]+++"
-                      "++++++>[-[<->-]+[<<<]]<[>+<-]>]<<-]<<-]");
+
+  execute_program(bf,
+                  ">++++++++++>+>+[[+++++[>++++++++<-]>.<++++++[>--------<-]+<<"
+                  "<]>.>>[[-]<[>+<-]>>[<<+>+>-]<[>+<-[>+<-[>+<-[>+<-[>+<-[>+<-["
+                  ">+<-[>+<-[>+<-[>[-]>+>+<<<-[>+<-]]]]]]]]]]]+>>>]<<<]");
 
   destroy(&bf);
   return 0;
@@ -71,10 +72,10 @@ void execute_cycle(brainfuck_t bf, char instr) {
   assert(bf);
   switch (instr) {
   case '+':
-    bf->memory[bf->pointer]++;
+    bf->memory[bf->pointer] = (bf->memory[bf->pointer] + 1);
     break;
   case '-':
-    bf->memory[bf->pointer]--;
+    bf->memory[bf->pointer] = (bf->memory[bf->pointer] - 1);
     break;
   case '.':
     putchar(bf->memory[bf->pointer]);
