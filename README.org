@@ -4,8 +4,37 @@ It's an interesting exercise, it's simple and, even after a simple "hello world!
 + C
 + Elisp
 + Java
-* Other language that I want to use:
-+ Haskell
 + awk
++ Haskell
+* Other language that I want to use:
 + rust (This is really interesting, but for now I don't know it very well)
 + Prolog
+* Some notes
+All the implementation are conceptually identical (except for the haskell version).
+One difference, that is immediately visible, is in the SLOCs.
+As was imaginable with the functional language the result are really concise, and IMO cleaner.
+One big surprise is the awk implementation, which is really short and also clean.
+The java is the biggest one, and is also the only one splitted on multiple file.
+
+** Premise
+When I say good written I mean that the code is easy to read, in this contest I don't care about the speed.
+In most of the implementation the program is passed to the interpreter with a string, usually for laziness (when I used a separated file is also for laziness, see awk!).
+
+** Elisp
+I just learned a little bit of elisp (thanks [[https://youtu.be/RQK_DaaX34Q][System Crafters]]!) and that is my first /difficult/ exercise.
+I'm happy overall with the result, the code is readable (for me!), but I'm sure that it could be better written, in particular when the program emulate the instruction *[* and *]* it may be a little messy.
+
+** AWK
+I love *awk*, I've started using this year in course on UNIX system and is really useful, despite is old age it have some really high level functionality (like dictionaries, regex, ecc...).
+I used the case statement instead of regexes because I found more readable this solution compared to; use a regex on a string with one character to match another string with a single character.
+
+** Haskell
+This implementation is the only one different conceptually, the others one when they find a *[* or *]* cycle throw the program until they find the matching parentheses, but in Haskell there is no way to loop unless using recursion (for what I know right now!), so I prefered to use a stack to save the position and jump back when they are needed.
+Obviously I can implement some extra helper function to loop on the string and get the correct position, but be /laziness/ of haskell corrupted me... (this solution is also faster).
+Even if I don't know well this language I really appreciate the type system and the function signature, sometime only the name and the signature of a function are enough to understand what the function do.
+
+** C
+This is the language with I am most comfortable with and this is also the first implemetation that I've made, this means that is more probable that there are some major mistake.
+
+** Java
+I really hate java language, objectively (haha that's funny) it's a great language, it's robust, it has a big community, an even bigger API, etc... , but it is not fun to use (IMO), it's redudant (the SLOCs are only one example of that), but I want to implement an OOP version so I used java.
